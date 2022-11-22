@@ -1,4 +1,4 @@
-const Pokemon = [
+module.exports = [
   {
     id: "001",
     name: "Bulbasaur",
@@ -50958,5 +50958,3 @@ const Pokemon = [
     }
   }
 ];
-
-module.exports = Pokemon

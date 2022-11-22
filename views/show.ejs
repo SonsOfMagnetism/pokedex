@@ -1,12 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<%- include("./partials/head.ejs") %> 
 <body>
-    <p><%=data.name%></p>
+    <h1>Pokedex</h1>
+    <h2>
+        <%= pokemon.name %>
+        -
+        <%=  pokemon.id  %> 
+    </h2>
+    <img src="<%= pokemon.img %> " alt="<%= pokemon.name %>">
+    <ul>
+        Type 
+        <% const type = pokemon.type %> 
+        <% for (i = 0; i < type.length; i++) { %>
+            <li>
+                <%= type[i] %> 
+            </li>
+        <% } %> 
+    </ul>
+    <ul>
+        Stats
+        <% const stats = pokemon.stats %>
+        <% const hp = stats.hp %>
+        <% const attack = stats.attack %>
+        <% const defense = stats.defense %>
+        <% const spattack = stats.spattack %>
+        <% const spdefense = stats.spdefense %>
+        <% const speed = stats.speed %>
+            <li>
+                HP: <%= hp %> 
+            </li>
+            <li>
+                Attack: <%= attack %> 
+            </li>
+            <li>
+                Defense: <%= defense %> 
+            </li>
+            <li>
+                Special Attack: <%= spattack %> 
+            </li>
+            <li>
+                Special Defense: <%= spdefense %> 
+            </li>
+            <li>
+                Speed: <%= speed %> 
+            </li>
+    </ul>
+    <a href="/pokemon/"><button>Back to Home Page</button></a>
 </body>
 </html>
