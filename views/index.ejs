@@ -3,6 +3,7 @@
 <%- include("./partials/head.ejs") %> 
 <body>
     <h1>Pokedex</h1>
+    <a href="/pokemon/new"><button>Add New Pokemon</button></a>
     <% for (let i = 0; i < pokemons.length; i++) { %>
         <% const pokemon = pokemons[i];  %> 
         <% const id = parseInt(pokemon.id) - 1 %> 

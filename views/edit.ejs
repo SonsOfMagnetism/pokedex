@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %> 
+<body>
+    <h1>Pokedex</h1>
+    <h2>
+        <%= pokemon.name %>
+        -
+        <%=  pokemon.id  %> 
+    </h2>
+    <img src="<%= pokemon.img %> " alt="<%= pokemon.name %>">
+    <form action="/pokemon/<%= pokemon._id %>?_method=PUT" method="POST">
+        <fieldset>
+
+            <legend>Edit a <%= pokemon.name %> </legend>
+            <label>
+                Name: <input type="text" name="name" value="<%= pokemon.name %>" placeholder="enter pokemon name">
+            </label>
+            <label>
+                ID: <input type="text" name="id" value="<%= pokemon.id %>" placeholder="enter pokemon id">
+            </label>
+            <label>
+            </label>
+        </fieldset>
+        <input type="submit" value="Update <%= pokemon.name %> ">
+    </form>
+    <a href="/pokemon/"><button>Back to Home Page</button></a>
+</body>
+</html>

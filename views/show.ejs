@@ -46,6 +46,8 @@
                 Speed: <%= speed %> 
             </li>
     </ul>
+    <% const id = parseInt(pokemon.id) - 1 %> 
+    <a href="/pokemon/<%=id%>/edit"><button>Edit Pokemon</button></a>
     <a href="/pokemon/"><button>Back to Home Page</button></a>
 </body>
 </html>
