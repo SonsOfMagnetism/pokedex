@@ -12,7 +12,7 @@ app.use(morgan('tiny'))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
-app.use('/static', express.static('public'))
+app.use(express.static('public'))
 
 // Index
 app.get('/pokemon', (req, res) => {
@@ -29,26 +29,32 @@ app.get('/pokemon/new', (req, res) => {
 })
 
 // Destroy
-// app.delete('pokemon/:id', (req, res) => {
-//     const id = req.params.id
-//     pokemon.findIndex() ={
-
-//     }
-// })
+app.delete('/pokemon/:id', (req, res) => {
+    const id = parseInt(pokemon.id) - 1
+    pokemon.splice(id, 1)
+    res.redirect('/pokemon')
+})
 
 // Update
+app.put('/pokemon/:id', (req, res) => {
+    pokemon[req.params.id] = req.body
+    console.log(req.body)
+    res.redirect('/pokemon')
+})
 
 // Create
 app.post('/pokemon', (req, res) => {
     pokemon.push(req.body)
+    console.log(req.body)
     res.redirect('/pokemon')
 })
 
 // Edit
 app.get('/pokemon/:id/edit', (req, res) => {
     res.render('edit.ejs', {
-        pokemon: pokemon[req.params.id]
+        pokemon: pokemon[req.params.id],
     })
+
 })
 
 // Show

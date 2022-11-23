@@ -9,9 +9,9 @@
         <%=  pokemon.id  %> 
     </h2>
     <img src="<%= pokemon.img %> " alt="<%= pokemon.name %>">
-    <form action="/pokemon/<%= pokemon._id %>?_method=PUT" method="POST">
+    <% const id = parseInt(pokemon.id) - 1 %> 
+    <form action="/pokemon/<%= id %>?_method=PUT" method="POST">
         <fieldset>
-
             <legend>Edit a <%= pokemon.name %> </legend>
             <label>
                 Name: <input type="text" name="name" value="<%= pokemon.name %>" placeholder="enter pokemon name">
@@ -20,8 +20,28 @@
                 ID: <input type="text" name="id" value="<%= pokemon.id %>" placeholder="enter pokemon id">
             </label>
             <label>
+                Type: <input type="text" name="type" value="<%= pokemon.type %>" placeholder="enter pokemon type">
+            </label>
+            <label>
+                HP: <input type="text" name="hp"  placeholder="enter pokemon hp">
+            </label>
+            <label>
+                Attack: <input type="text" name="attack"  placeholder="enter pokemon attack">
+            </label>
+            <label>
+                Defense: <input type="text" name="defense"  placeholder="enter pokemon defense">
+            </label>
+            <label>
+                Special Attack: <input type="text" name="spattack" placeholder="enter pokemon special attack">
+            </label>
+            <label>
+                Special Defense: <input type="text" name="spdefense"  placeholder="enter pokemon special defense">
+            </label>
+            <label>
+                Speed: <input type="text" name="speed"  placeholder="enter pokemon speed">
             </label>
         </fieldset>
+        
         <input type="submit" value="Update <%= pokemon.name %> ">
     </form>
     <a href="/pokemon/"><button>Back to Home Page</button></a>

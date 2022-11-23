@@ -6,12 +6,12 @@
     <h2>
         <%= pokemon.name %>
         -
-        <%=  pokemon.id  %> 
+        <%= pokemon.id %> 
     </h2>
     <img src="<%= pokemon.img %> " alt="<%= pokemon.name %>">
     <ul>
         Type 
-        <% const type = pokemon.type %> 
+        <% let type = pokemon.type %> 
         <% for (i = 0; i < type.length; i++) { %>
             <li>
                 <%= type[i] %> 
@@ -20,34 +20,31 @@
     </ul>
     <ul>
         Stats
-        <% const stats = pokemon.stats %>
-        <% const hp = stats.hp %>
-        <% const attack = stats.attack %>
-        <% const defense = stats.defense %>
-        <% const spattack = stats.spattack %>
-        <% const spdefense = stats.spdefense %>
-        <% const speed = stats.speed %>
             <li>
-                HP: <%= hp %> 
+                HP: <%= pokemon.hp || pokemon.stats.hp %> 
             </li>
             <li>
-                Attack: <%= attack %> 
+                Attack: <%= pokemon.attack || pokemon.stats.attack %> 
             </li>
             <li>
-                Defense: <%= defense %> 
+                Defense: <%= pokemon.defense || pokemon.stats.defense %> 
             </li>
             <li>
-                Special Attack: <%= spattack %> 
+                Special Attack: <%= pokemon.spattack || pokemon.stats.spattack %> 
             </li>
             <li>
-                Special Defense: <%= spdefense %> 
+                Special Defense: <%= pokemon.spdefense ||pokemon.stats.spdefense  %> 
             </li>
             <li>
-                Speed: <%= speed %> 
+                Speed: <%= pokemon.speed || pokemon.stats.speed %> 
             </li>
     </ul>
+
     <% const id = parseInt(pokemon.id) - 1 %> 
     <a href="/pokemon/<%=id%>/edit"><button>Edit Pokemon</button></a>
+    <form action="/pokemon/<%=id%>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete Pokemon">
+    </form>
     <a href="/pokemon/"><button>Back to Home Page</button></a>
 </body>
 </html>
